@@ -1,9 +1,11 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 
 void main() {
-
+  
   runApp(MyApp());
 }
 
@@ -41,13 +43,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
-      appBar: AppBar(
+      // appBar: AppBar(
 
 
-        title: Center(child: Text(widget.title),),
-      ),
+      //   title: Center(child: Text(widget.title),),
+      // ),
       body: Center(
+
 
 
         child: Column(
@@ -90,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   String last = 'O';
-
+  
   _buildelement(int i, int j){
     var screenSize = MediaQuery.of(context).size;
     var width = screenSize.width;
@@ -103,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       },
         child: Container(
-          height: height/3-27,
+          height: height/3,
           width: width/3,
           decoration: BoxDecoration
           (
@@ -124,7 +128,8 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ),
 
-        ),
+        )
+
     );
 
   }
@@ -159,9 +164,38 @@ class _MyHomePageState extends State<MyHomePage> {
 
     }
     if(row == n+1 || col == n+1|| diag == n+1||rdiag == n+1)
-      {print('$player won');
+      {
+        // print('$player won');
+        _showMyDialog(player);
       _matrix = [[' ', ' ', ' '],[' ', ' ', ' '],[' ', ' ', ' ']];}
   }
+  Future<void> _showMyDialog(String player) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Center(child: Text('Player "$player" WON')),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: BorderSide(
+            width: 3,
+            ),
+            ) ,
+        elevation: 24,
+        backgroundColor: Colors.pinkAccent[100],
 
+        actions: <Widget>[
+          TextButton(
+            child: Center(child: Text('Next Game',style: TextStyle(color: Colors.white),),),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
 
 }
