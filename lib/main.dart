@@ -1,11 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-
 void main() {
-  
+
   runApp(MyApp());
 }
 
@@ -45,11 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
-      // appBar: AppBar(
 
-
-      //   title: Center(child: Text(widget.title),),
-      // ),
       body: Center(
 
 
@@ -94,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
   String last = 'O';
-  
+
   _buildelement(int i, int j){
     var screenSize = MediaQuery.of(context).size;
     var width = screenSize.width;
@@ -103,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: () {
         _Update_Matrix(i,j);
         _check_winner(i,j);
-        print(_matrix[i]);
+        // print(_matrix[i]);
 
       },
         child: Container(
@@ -165,9 +158,9 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     if(row == n+1 || col == n+1|| diag == n+1||rdiag == n+1)
       {
-        // print('$player won');
+
         _showMyDialog(player);
-      _matrix = [[' ', ' ', ' '],[' ', ' ', ' '],[' ', ' ', ' ']];}
+      }
   }
   Future<void> _showMyDialog(String player) async {
   return showDialog<void>(
@@ -189,7 +182,12 @@ class _MyHomePageState extends State<MyHomePage> {
           TextButton(
             child: Center(child: Text('Next Game',style: TextStyle(color: Colors.white),),),
             onPressed: () {
+
               Navigator.of(context).pop();
+              setState(() {
+                _matrix = [[' ', ' ', ' '],[' ', ' ', ' '],[' ', ' ', ' ']];
+              });
+
             },
           ),
         ],
