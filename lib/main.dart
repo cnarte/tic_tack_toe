@@ -96,6 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: () {
         _Update_Matrix(i,j);
         _check_winner(i,j);
+        _check_tie();
         // print(_matrix[i]);
 
       },
@@ -126,7 +127,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
   }
+  _check_tie(){
+    int flag=0;
+    // var player = _matrix[0][0];
+    for(int i=0;i<3;i++)
+    {
+      for(int j=0;j<3;j++)
+      {
+        if(_matrix[i][j]==' ')
+          flag=1;
+      }
 
+    }
+    if(flag==0)
+    {
+      _showMyDialog('The Game was a Tie');
+    }
+  }
   _Update_Matrix(int i,int j){
     setState(() {
 
@@ -159,16 +176,16 @@ class _MyHomePageState extends State<MyHomePage> {
     if(row == n+1 || col == n+1|| diag == n+1||rdiag == n+1)
       {
 
-        _showMyDialog(player);
+        _showMyDialog('Player "$player" WON');
       }
   }
-  Future<void> _showMyDialog(String player) async {
+  Future<void> _showMyDialog(String msg) async {
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Center(child: Text('Player "$player" WON')),
+        title: Center(child: Text(msg)),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
           side: BorderSide(
