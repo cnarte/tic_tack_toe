@@ -2,7 +2,7 @@
 
 A new Flutter Practice project.
 
-![Demo-video](https://drive.google.com/file/d/1G35PbByzCW-2Kiv0vA9fTyoMcHtps2jJ/view?usp=sharing)
+![github_project_video](https://user-images.githubusercontent.com/56212417/117532272-3c1fb200-b004-11eb-897e-7c55676f197a.gif)
 
 ## Getting Started
 
