@@ -1,6 +1,8 @@
 # tic_tack_toe
 
-A new Flutter Pracice project.
+A new Flutter Practice project.
+
+![Demo-video](https://drive.google.com/file/d/1G35PbByzCW-2Kiv0vA9fTyoMcHtps2jJ/view?usp=sharing)
 
 ## Getting Started
 
